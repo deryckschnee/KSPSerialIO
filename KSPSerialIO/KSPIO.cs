@@ -57,15 +57,15 @@ namespace KSPSerialIO
         public float LiquidFuelS;    //35
         public float OxidizerTotS;   //36
         public float OxidizerS;      //37
-        public UInt32 MissionTime;   //38
+        public uint MissionTime;   //38
         public float deltaTime;      //39
         public float VOrbit;         //40
-        public UInt32 MNTime;        //41
+        public uint MNTime;        //41
         public float MNDeltaV;       //42
         public float Pitch;          //43
         public float Roll;           //44
         public float Heading;        //45
-        public UInt16 ActionGroups;  //46  status bit order:SAS, RCS, Light, Gear, Brakes, Abort, Custom01 - 10 
+        public ushort ActionGroups;  //46  status bit order:SAS, RCS, Light, Gear, Brakes, Abort, Custom01 - 10 
         public byte SOINumber;       //47  SOI Number (decimal format: sun-planet-moon e.g. 130 = kerbin, 131 = mun)
         public byte MaxOverHeat;     //48  Max part overheat (% percent)
         public float MachNumber;     //49
@@ -120,18 +120,18 @@ namespace KSPSerialIO
 
     public struct VesselControls
     {
-        public Boolean SAS;
-        public Boolean RCS;
-        public Boolean Lights;
-        public Boolean Gear;
-        public Boolean Brakes;
-        public Boolean Precision;
-        public Boolean Abort;
-        public Boolean Stage;
+        public bool SAS;
+        public bool RCS;
+        public bool Lights;
+        public bool Gear;
+        public bool Brakes;
+        public bool Precision;
+        public bool Abort;
+        public bool Stage;
         public int Mode;
         public int SASMode;
         public int SpeedMode;
-        public Boolean[] ControlGroup;
+        public bool[] ControlGroup;
         public float Pitch;
         public float Roll;
         public float Yaw;
@@ -161,7 +161,7 @@ namespace KSPSerialIO
 
     #endregion
 
-    enum enumAG : int
+    enum EnumAG : int
     {
         SAS,
         RCS,
@@ -268,8 +268,8 @@ namespace KSPSerialIO
         public static SerialPort Port;
         public static string PortNumber;
         public static string Win32PortName;
-        public static Boolean DisplayFound = false;
-        public static Boolean ControlReceived = false;
+        public static bool DisplayFound = false;
+        public static bool ControlReceived = false;
 
         public static VesselData VData;
         public static ControlPacket CPacket;
@@ -986,22 +986,22 @@ namespace KSPSerialIO
                     KSPSerialPort.VData.ManeuverHeading = FloatAngleToFixed_16(Maneuver.Heading);
                     KSPSerialPort.VData.ManeuverPitch = FloatAngleToFixed_16(Maneuver.Pitch);
 
-                    KSPSerialPort.ControlStatus((int)enumAG.SAS, ActiveVessel.ActionGroups[KSPActionGroup.SAS]);
-                    KSPSerialPort.ControlStatus((int)enumAG.RCS, ActiveVessel.ActionGroups[KSPActionGroup.RCS]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Light, ActiveVessel.ActionGroups[KSPActionGroup.Light]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Gear, ActiveVessel.ActionGroups[KSPActionGroup.Gear]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Brakes, ActiveVessel.ActionGroups[KSPActionGroup.Brakes]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Abort, ActiveVessel.ActionGroups[KSPActionGroup.Abort]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Custom01, ActiveVessel.ActionGroups[KSPActionGroup.Custom01]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Custom02, ActiveVessel.ActionGroups[KSPActionGroup.Custom02]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Custom03, ActiveVessel.ActionGroups[KSPActionGroup.Custom03]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Custom04, ActiveVessel.ActionGroups[KSPActionGroup.Custom04]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Custom05, ActiveVessel.ActionGroups[KSPActionGroup.Custom05]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Custom06, ActiveVessel.ActionGroups[KSPActionGroup.Custom06]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Custom07, ActiveVessel.ActionGroups[KSPActionGroup.Custom07]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Custom08, ActiveVessel.ActionGroups[KSPActionGroup.Custom08]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Custom09, ActiveVessel.ActionGroups[KSPActionGroup.Custom09]);
-                    KSPSerialPort.ControlStatus((int)enumAG.Custom10, ActiveVessel.ActionGroups[KSPActionGroup.Custom10]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.SAS, ActiveVessel.ActionGroups[KSPActionGroup.SAS]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.RCS, ActiveVessel.ActionGroups[KSPActionGroup.RCS]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Light, ActiveVessel.ActionGroups[KSPActionGroup.Light]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Gear, ActiveVessel.ActionGroups[KSPActionGroup.Gear]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Brakes, ActiveVessel.ActionGroups[KSPActionGroup.Brakes]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Abort, ActiveVessel.ActionGroups[KSPActionGroup.Abort]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Custom01, ActiveVessel.ActionGroups[KSPActionGroup.Custom01]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Custom02, ActiveVessel.ActionGroups[KSPActionGroup.Custom02]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Custom03, ActiveVessel.ActionGroups[KSPActionGroup.Custom03]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Custom04, ActiveVessel.ActionGroups[KSPActionGroup.Custom04]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Custom05, ActiveVessel.ActionGroups[KSPActionGroup.Custom05]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Custom06, ActiveVessel.ActionGroups[KSPActionGroup.Custom06]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Custom07, ActiveVessel.ActionGroups[KSPActionGroup.Custom07]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Custom08, ActiveVessel.ActionGroups[KSPActionGroup.Custom08]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Custom09, ActiveVessel.ActionGroups[KSPActionGroup.Custom09]);
+                    KSPSerialPort.ControlStatus((int)EnumAG.Custom10, ActiveVessel.ActionGroups[KSPActionGroup.Custom10]);
 
                     if (ActiveVessel.orbit.referenceBody != null)
                     {
