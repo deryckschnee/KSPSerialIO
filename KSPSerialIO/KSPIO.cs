@@ -740,7 +740,7 @@ namespace KSPSerialIO
 
         IOResource TempR = new IOResource();
 
-        private static Boolean wasSASOn = false;
+        // private static Boolean wasSASOn = false;
 
         private ScreenMessageStyle KSPIOScreenStyle = ScreenMessageStyle.UPPER_RIGHT;
 
